@@ -1,3 +1,5 @@
+'use client'
+
 export default function getBase64ImageFromURL(url: string) {
   return new Promise((resolve, reject) => {
     const img = new Image();
