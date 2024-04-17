@@ -14,7 +14,6 @@ export default function Relatorio() {
   }
 
   return (
-    // <button onClick={geraDoc} style={{border:'2px solid white', borderRadius: '10%', padding: '3px'}}>
     <button onClick={geraDoc}>
       RELATORIO
     </button>
