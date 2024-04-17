@@ -1,12 +1,14 @@
-'use client'
-
 export default function getBase64ImageFromURL(url: string) {
   return new Promise((resolve, reject) => {
+    if (typeof window === 'undefined') {
+      reject(new Error('Esta função só pode ser executada no lado do cliente'));
+      return;
+    }
+
     const img = new Image();
     img.setAttribute("crossOrigin", "anonymous");
   
     img.onload = () => {
-      // console.log(url);
       const canvas = document.createElement("canvas");
       canvas.width = img.width;
       canvas.height = img.height;
@@ -20,7 +22,7 @@ export default function getBase64ImageFromURL(url: string) {
     };
   
     img.onerror = error => {
-      reject(error);
+      reject("errooo: " + error);
     };
 
     img.src = url;

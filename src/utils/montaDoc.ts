@@ -1,7 +1,8 @@
 import { saveAs } from "file-saver";
-import { AlignmentType, Document, Footer, Header, HeadingLevel, PageNumber, Paragraph, TextRun, UnderlineType } from "docx";
+import { AlignmentType, Document, Footer, Header, HeadingLevel, ImageRun, PageNumber, Paragraph, TextRun, UnderlineType } from "docx";
 import { table, table2, table3 } from "./docComponents/tables";
-import { image, imgFundo, imgLogo } from "./docComponents/images";
+import { montaImgFundo, montaImgLogo, primaryImage } from "./docComponents/images";
+
 
 export default async function montaDoc() {
   const doc = new Document({
@@ -61,13 +62,13 @@ export default async function montaDoc() {
           }),
           new Paragraph({
             children: [
-              imgFundo
+              await montaImgFundo()
             ],
             alignment: AlignmentType.CENTER
           }),
           new Paragraph({
             children: [
-              imgLogo
+              await montaImgLogo()
             ]
           }),
           new Paragraph("_________________________________________________________________________________________"),
@@ -110,7 +111,7 @@ export default async function montaDoc() {
       }
     ]
   });
-  saveAs(image, "nomeModificado.jpeg");
+  saveAs(await primaryImage(), "nomeModificado.jpeg");
 
   return doc;
 }

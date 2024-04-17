@@ -1,3 +1,4 @@
+'use client'
 import { AlignmentType, Paragraph, Table, TableCell, TableRow, WidthType } from "docx";
 
 export const table = new Table({
